@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHN CAREER LOUNGE 2026 | Meet your future.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', 'M PLUS Rounded 1c', 'Hiragino Sans', sans-serif;
+      font-weight: 400;
+      background: #F4EFE3;
+      color: #1A1A1A;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    :root {
+      --cream:   #F4EFE3;
+      --white:   #FFFFFF;
+      --dark:    #1A1A1A;
+      --teal:    #5ABDB0;
+      --teal-lt: #C2ECEA;
+      --yellow:  #F0C840;
+      --yel-lt:  #FDF4C4;
+      --coral:   #F07060;
+      --cor-lt:  #FCDDD9;
+      --lav:     #C8B4F0;
+      --lav-lt:  #EDE5FF;
+      --green:   #9ACDA0;
+      --gre-lt:  #DAF0DC;
+      --border:  #D4CDBF;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(244,239,227,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--dark);
+      height: 58px; display: flex; align-items: center;
+    }
+    .nav__inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px; width: 100%;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .nav__logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .nav__logo-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: 15px; letter-spacing: .06em; color: var(--dark); white-space: nowrap;
+    }
+    .hero-nhn-mark {
+      display: block;
+      height: 0.72em;
+      width: auto;
+      margin-bottom: 0.14em;
+    }
+    /* Colored pill nav links */
+    .nav__links { display: flex; gap: 8px; list-style: none; }
+    .nav__links a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      color: #fff; padding: 6px 14px; border-radius: 99px;
+      white-space: nowrap; transition: opacity .2s, transform .15s;
+    }
+    .nav__links a:hover { opacity: .82; transform: translateY(-1px); }
+    .nl-a { background: var(--teal); }
+    .nl-b { background: var(--coral); }
+    .nl-c { background: #E0A020; }
+    .nl-d { background: var(--dark); }
+    .nav__cta {
+      background: var(--dark); color: #fff;
+      font-size: 13px; font-weight: 700; flex-shrink: 0;
+      padding: 8px 20px; border-radius: 99px;
+      border: 2px solid var(--dark);
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav__cta:hover { background: var(--teal); border-color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero { padding: 100px 28px 64px; background: var(--cream); position: relative; overflow: hidden; }
+    .hero__inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center; position: relative; z-index: 1;
+    }
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px dashed var(--dark); border-radius: 99px;
+      padding: 5px 16px; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px;
+    }
+    .hero__title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-weight: 900;
+      font-size: clamp(42px, 6vw, 72px);
+      letter-spacing: -0.02em;
+      line-height: 1; color: var(--dark); margin-bottom: 10px;
+      display: block; padding: 0;
+    }
+    .hero__title span { display: block; }
+    .hero__title .teal { color: var(--teal); }
+    .hero__subtitle {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 24px; color: var(--teal); margin-bottom: 20px;
+    }
+    .hero__desc { font-size: 15px; font-weight: 400; line-height: 1.9; color: #555; margin-bottom: 28px; }
+    .hero__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .dtag {
+      display: inline-flex; align-items: center; gap: 5px;
+      border: 2px dashed var(--dark); border-radius: 99px;
+      padding: 5px 14px; font-size: 13px; font-weight: 700;
+    }
+    .dtag--teal   { background: var(--teal);   border: 2.5px solid var(--dark); color: #fff; }
+    .dtag--yellow { background: var(--yellow);  border: 2.5px solid var(--dark); color: var(--dark); }
+    .dtag--coral  { background: var(--coral);   border: 2.5px solid var(--dark); color: #fff; }
+    .dtag--dark   { background: var(--dark);    border: 2.5px solid var(--dark); color: #fff; }
+    .hero__illus {
+      position: relative; display: flex;
+      align-items: center; justify-content: center; min-height: 340px;
+    }
+    .sp { position: absolute; pointer-events: none; font-weight: 900; line-height: 1; animation: spf 3.4s ease-in-out infinite; }
+    .sp--y { color: var(--yellow); }
+    .sp--t { color: var(--teal); }
+    .sp--c { color: var(--coral); }
+    .sp--l { color: var(--lav); }
+    @keyframes spf { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(18deg); } }
+
+    /* ── OVERVIEW STRIP ── */
+    .overview { background: var(--dark); border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+    .overview__inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .ov-item { padding: 28px 24px; border-right: 1px solid rgba(255,255,255,.12); }
+    .ov-item:last-child { border-right: none; }
+    .ov-label { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 6px; }
+    .ov-value { font-size: 19px; font-weight: 700; color: #fff; line-height: 1.3; }
+    .ov-sub { font-size: 11px; font-weight: 400; color: rgba(255,255,255,.45); margin-top: 3px; }
+
+    /* ── SECTIONS SHARED ── */
+    .sec { padding: 80px 28px; }
+    .sec-inner { max-width: 1100px; margin: 0 auto; }
+    .sec-label { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 10px; }
+    .sec-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
+
+    /* Fixed squiggle – proper continuous wave */
+    .squig { display: block; margin-bottom: 24px; overflow: visible; }
+
+    /* ── ABOUT ── */
+    .about { background: #fff; border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+    .about__inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center;
+    }
+    .about__body p { font-size: 15px; font-weight: 400; line-height: 1.95; color: #555; margin-bottom: 14px; }
+    /* Company logos row */
+    .about__logos { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 32px; padding-top: 24px; border-top: 1.5px solid var(--border); }
+    .about__logo-item { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .about__logo-item svg { height: 32px; width: auto; }
+    .about__logo-item span { font-size: 10px; font-weight: 700; letter-spacing: .08em; color: #999; text-transform: uppercase; }
+    .about__visual { display: flex; justify-content: center; align-items: center; }
+
+    /* ── CHAPTER CARDS ── */
+    .features { background: var(--cream); }
+    .features__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    .ch-card {
+      background: #fff; border: 2.5px solid var(--dark);
+      border-radius: 22px; padding: 28px;
+      position: relative; overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .ch-card:hover { transform: translateY(-5px); box-shadow: 5px 8px 0 var(--dark); }
+    .ch-card--wide { grid-column: 1 / 3; }
+    .ch-card--wide .ch-card__inner { display: grid; grid-template-columns: 1fr 200px; gap: 24px; align-items: center; }
+    .ch-num { font-family: 'Fredoka One', cursive; font-size: 11px; letter-spacing: .12em; color: var(--teal); display: block; margin-bottom: 10px; }
+    .ch-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .ch-tag { border: 2px dashed var(--dark); border-radius: 99px; padding: 3px 12px; font-size: 12px; font-weight: 700; }
+    .ch-title { font-size: 21px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
+    .ch-desc { font-size: 13px; font-weight: 400; color: #555; line-height: 1.8; }
+    .ch-card__corner { position: absolute; top: 0; right: 0; width: 56px; height: 56px; border-radius: 0 20px 0 56px; }
+    .ch-card__illus-wrap { display: flex; justify-content: flex-end; align-items: center; }
+
+    /* ── PROGRAM ── */
+    .program { background: #fff; border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+    .program__grid { display: grid; grid-template-columns: 1fr 1.45fr; gap: 72px; align-items: start; }
+    /* Redesigned timeline – left border, no overlap */
+    .timeline {
+      padding-left: 32px;
+      border-left: 2.5px solid var(--border);
+      display: flex; flex-direction: column;
+    }
+    .tl-item { position: relative; padding-bottom: 36px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: ''; position: absolute;
+      left: -40px; top: 6px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--teal); border: 3px solid #fff;
+      box-shadow: 0 0 0 2.5px var(--teal);
+    }
+    /* Time shown as a colored badge – no overlap with any line */
+    .tl-time {
+      display: inline-block;
+      font-size: 12px; font-weight: 700;
+      background: var(--teal-lt); color: var(--teal);
+      padding: 3px 10px; border-radius: 6px;
+      margin-bottom: 7px;
+    }
+    .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+    .tl-desc  { font-size: 13px; font-weight: 400; color: #555; line-height: 1.8; }
+    .tl-badge {
+      display: inline-block; margin-top: 7px;
+      background: var(--teal); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 3px 11px; border-radius: 6px;
+    }
+
+    /* ── FOR WHOM ── */
+    .forwhom { background: var(--cream); }
+    .forwhom__inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .cklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; font-weight: 500;
+      background: #fff; border: 2.5px solid var(--dark);
+      border-radius: 14px; padding: 13px 18px;
+      transition: transform .18s;
+    }
+    .cklist li:hover { transform: translateX(4px); }
+    .ck-icon {
+      width: 24px; height: 24px; min-width: 24px;
+      background: var(--teal); color: #fff;
+      border-radius: 7px; border: 2px solid var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 900; margin-top: 1px;
+    }
+
+    /* ── CTA ── */
+    .cta-sec {
+      background: var(--teal); border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark);
+      padding: 88px 28px; position: relative; overflow: hidden;
+    }
+    .cta-sec__inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .cta-sec h2 { font-size: clamp(34px, 6vw, 58px); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+    .cta-sec p { font-size: 15px; font-weight: 400; color: rgba(255,255,255,.85); line-height: 1.9; margin-bottom: 36px; }
+    .cta-deadline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,0,0,.15); border: 2px solid rgba(255,255,255,.4);
+      border-radius: 14px; padding: 12px 26px;
+      font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 40px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--dark); color: #fff;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 18px; font-weight: 800;
+      padding: 22px 60px; border-radius: 99px;
+      border: 3px solid var(--dark); letter-spacing: .06em;
+      transition: background .2s, color .2s, transform .15s, box-shadow .15s;
+      text-decoration: none;
+    }
+    .cta-btn:hover { background: #fff; color: var(--dark); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
+    .cta-note { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.55); margin-top: 16px; }
+
+    /* ── FAQ ── */
+    .faq { background: #fff; border-top: 3px solid var(--dark); }
+    .faq__inner { max-width: 740px; margin: 0 auto; }
+    .faq__hd { text-align: center; margin-bottom: 48px; }
+    .faq-item { border-bottom: 2px solid var(--dark); padding: 22px 0; }
+    .faq-item:first-of-type { border-top: 2px solid var(--dark); }
+    .faq-q { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; font-weight: 700; }
+    .faq-qi {
+      width: 26px; height: 26px; min-width: 26px;
+      background: var(--teal); color: #fff;
+      border-radius: 8px; border: 2px solid var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .faq-a { padding-left: 40px; font-size: 14px; font-weight: 400; color: #555; line-height: 1.9; margin-top: 10px; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--dark); padding: 44px 28px; }
+    .footer__inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer__brand { font-family: 'Fredoka One', cursive; font-size: 20px; color: #fff; letter-spacing: .05em; }
+    .footer__brand .t { color: var(--teal); }
+    .footer__cos { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.4); letter-spacing: .06em; }
+    .footer__copy { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.3); }
+
+    /* ── JOBS ── */
+    .jobs-sec { background: #fff; border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+    .jobs-co {
+      border: 2.5px solid var(--dark); border-radius: 22px;
+      padding: 32px; margin-bottom: 28px; background: var(--cream);
+    }
+    .jobs-co:last-child { margin-bottom: 0; }
+    .jobs-co__hd {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 14px; padding-bottom: 24px; margin-bottom: 24px;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .jobs-co__logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .jobs-co__logo-wrap svg { height: 26px; width: auto; }
+    .jobs-co__badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: .08em; padding: 3px 10px; border-radius: 99px; color: #fff;
+    }
+    .jobs-co__desc { font-size: 13px; color: #555; line-height: 1.9; text-align: center; max-width: 640px; }
+    .jobs-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .jobs-list li a {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 18px; border-radius: 12px;
+      border: 2px solid var(--border); background: #fff;
+      font-size: 13px; font-weight: 600; color: var(--dark);
+      text-decoration: none; transition: border-color .18s, background .18s, transform .18s;
+    }
+    .jobs-list li a:hover { border-color: var(--teal); background: var(--teal-lt); transform: translateX(4px); }
+    .jobs-arrow { font-size: 16px; color: var(--teal); flex-shrink: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero__inner        { grid-template-columns: 1fr; }
+      .hero__illus        { display: none; }
+      .overview__inner    { grid-template-columns: 1fr 1fr; }
+      .ov-item            { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .about__inner       { grid-template-columns: 1fr; }
+      .about__visual      { display: none; }
+      .features__grid     { grid-template-columns: 1fr; }
+      .ch-card--wide      { grid-column: 1; }
+      .ch-card--wide .ch-card__inner { grid-template-columns: 1fr; }
+      .program__grid      { grid-template-columns: 1fr; }
+      .forwhom__inner     { grid-template-columns: 1fr; }
+      .nav__links         { display: none; }
+      img                 { max-width: 100%; height: auto; }
+    }
+    @media (max-width: 900px) {
+      .jobs-list          { grid-template-columns: 1fr; }
+      .jobs-co__hd        { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .overview__inner    { grid-template-columns: 1fr; }
+      .hero               { padding: 80px 16px 48px; }
+      .sec                { padding: 56px 16px; }
+      .nav__inner         { padding: 0 16px; }
+      .nav__cta           { font-size: 12px; padding: 7px 14px; }
+      .hero__title        { font-size: clamp(36px, 10vw, 52px); }
+      .cta-btn            { font-size: 15px; padding: 18px 28px; width: 100%; text-align: center; }
+      .cta-deadline       { font-size: 12px; padding: 10px 16px; text-align: center; }
+      .ch-card            { padding: 20px; }
+      .ch-card__illus-wrap { display: none; }
+      .about__logos       { gap: 16px; }
+      .about__logos svg   { height: 24px; }
+      .forwhom__inner > div:last-child { display: none; }
+      .footer__inner      { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo" aria-label="NHN CAREER LOUNGE">
+      <span class="nav__logo-text">NHN CAREER LOUNGE</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#about" class="nl-a">イベントについて</a></li>
+      <li><a href="#features" class="nl-b">コンテンツ</a></li>
+      <li><a href="#program" class="nl-c">スケジュール</a></li>
+      <li><a href="#jobs" class="nl-d">対象求人</a></li>
+    </ul>
+    <a href="#apply" class="nav__cta">参加申し込み →</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div style="position:absolute;width:320px;height:320px;border-radius:50%;background:var(--yellow);opacity:.1;top:-80px;left:-60px;pointer-events:none;"></div>
+  <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:var(--coral);opacity:.08;bottom:-30px;right:8%;pointer-events:none;"></div>
+
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">✦ NHN Group Career Event 2026 ✦</div>
+      <h1 class="hero__title">
+        <svg class="hero-nhn-mark" viewBox="0 -1 114.29 28" xmlns="http://www.w3.org/2000/svg" aria-label="NHN" role="img">
+          <style>.hn{fill:#191919}</style>
+          <polygon class="hn" points="62.57 26.02 68.57 26.02 68.57 .64 62.57 .64 62.57 10.42 51.72 10.42 51.72 .64 45.73 .64 45.73 26.02 51.72 26.02 51.72 16.7 51.72 16.21 62.57 16.24 62.57 16.7 62.57 26.02"/>
+          <polygon class="hn" points="16.73 15.88 5.39 0 0 2.8 0 26.04 5.86 26.04 5.86 10.73 17.74 26.87 17.77 26.87 22.66 24.3 22.66 .66 16.73 .66 16.73 15.88"/>
+          <polygon class="hn" points="97.5 10.73 109.38 26.87 109.4 26.87 114.29 24.3 114.29 .66 108.37 .66 108.37 15.88 97.03 0 91.63 2.8 91.63 26.04 97.5 26.04 97.5 10.73"/>
+        </svg>
+        <span>CAREER</span>
+        <span class="teal">LOUNGE</span>
+      </h1>
+      <p class="hero__subtitle">Meet your future.</p>
+      <p class="hero__desc">NHNグループの仕事・人・キャリアを自由に知る。<br>気になるブースを自由に回って、社員と直接話してみよう！</p>
+      <div class="hero__tags">
+        <span class="dtag dtag--dark">📅 2026.6.5 FRI.</span>
+        <span class="dtag dtag--teal">🕑 14:00 – 16:30</span>
+        <span class="dtag dtag--yellow">📍 NHNアトリエ</span>
+        <span class="dtag dtag--coral">🎟 参加無料</span>
+        <span style="display:inline-flex;gap:6px;flex-wrap:nowrap;align-items:center;">
+          <span class="dtag" style="background:#fff;border:2.5px solid var(--dark);color:var(--dark);">27卒</span>
+          <span class="dtag" style="background:#fff;border:2.5px solid var(--dark);color:var(--dark);">28卒以降も歓迎!</span>
+        </span>
+      </div>
+      <a href="#apply"><span class="dtag dtag--dark" style="font-size:16px;padding:14px 32px;border-radius:99px;cursor:pointer;">参加を申し込む →</span></a>
+    </div>
+
+    <!-- Free-style clean illustration -->
+    <div class="hero__illus">
+      <span class="sp sp--y" style="top:4%;left:6%;font-size:26px;animation-delay:.2s">✦</span>
+      <span class="sp sp--t" style="top:8%;right:8%;font-size:18px;animation-delay:.7s">✧</span>
+      <span class="sp sp--c" style="bottom:22%;left:4%;font-size:22px;animation-delay:1.1s">✦</span>
+      <span class="sp sp--l" style="bottom:10%;right:6%;font-size:20px;animation-delay:.4s">✦</span>
+      <span class="sp sp--y" style="top:38%;right:2%;font-size:14px;animation-delay:1.6s">✧</span>
+
+      <!-- Hero illustration -->
+      <img src="./images/joinus.png" alt="Join Us イラスト" width="560" height="440" style="position:relative;z-index:2;display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW STRIP ══ -->
+<section class="overview">
+  <div class="overview__inner">
+    <div class="ov-item"><span class="ov-label">DATE</span><div class="ov-value">2026.6.5</div><div class="ov-sub">Friday</div></div>
+    <div class="ov-item"><span class="ov-label">TIME</span><div class="ov-value">14:00 – 16:30</div><div class="ov-sub">受付 13:45〜</div></div>
+    <div class="ov-item"><span class="ov-label">PLACE</span><div class="ov-value">NHNアトリエ</div><div class="ov-sub">東京都港区西新橋3丁目1-8</div></div>
+    <div class="ov-item"><span class="ov-label">FORMAT</span><div class="ov-value">対面開催</div><div class="ov-sub">自由回遊型イベント</div></div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about sec" id="about">
+  <div class="about__inner">
+    <div class="about__body">
+      <span class="sec-label">About the Event</span>
+      <h2 class="sec-title">自分に合う<br>キャリアを見つける<br>１日に。</h2>
+      <p>NHNグループが主催する回遊型のキャリアイベントです。堅苦しい説明会とは違い、気になるブースを自由に巡りながら、社員と気軽に話してリアルな職場の雰囲気を体感できます。</p>
+      <p>ゲーム・IT・クラウドなど多彩な事業を展開するグループ各社の社員たちが、あなたの「知りたい」に直接答えます。</p>
+
+      <!-- Company logos (inline SVG, namespaced) -->
+      <div class="about__logos">
+        <div class="about__logo-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 114.29 47.39" aria-label="NHN JAPAN">
+            <style>.njp2{fill:#191919}</style>
+            <polygon class="njp2" points="62.57 26.02 68.57 26.02 68.57 .64 62.57 .64 62.57 10.42 51.72 10.42 51.72 .64 45.73 .64 45.73 26.02 51.72 26.02 51.72 16.7 51.72 16.21 62.57 16.24 62.57 16.7 62.57 26.02"/>
+            <polygon class="njp2" points="16.73 15.88 5.39 0 0 2.8 0 26.04 5.86 26.04 5.86 10.73 17.74 26.87 17.77 26.87 22.66 24.3 22.66 .66 16.73 .66 16.73 15.88"/>
+            <polygon class="njp2" points="97.5 10.73 109.38 26.87 109.4 26.87 114.29 24.3 114.29 .66 108.37 .66 108.37 15.88 97.03 0 91.63 2.8 91.63 26.04 97.5 26.04 97.5 10.73"/>
+            <path class="njp2" d="M34.38,47.21c-.34-.12-.74-.32-1.13-.79-.18-.23-.32-.47-.47-.83l1.7-.81c.09.2.21.43.34.55.15.16.36.21.59.21.2,0,.46-.11.57-.3.09-.16.15-.35.16-.69v-.35s.01-5.14.01-5.14h1.92v5.47c0,.38-.03.74-.14,1.07-.24.73-.71,1.24-1.4,1.56-.35.16-.79.22-1.19.22-.33,0-.65-.06-.97-.18Z"/>
+            <path class="njp2" d="M49.59,47.16h-2l-.6-1.59h-3.62l-.59,1.59h-1.95l3.02-8.1h2.62l3.12,8.1ZM46.35,43.85l-1.18-3.15-1.16,3.15h2.34Z"/>
+            <path class="njp2" d="M52.25,39.06h3.76c.42,0,.96.07,1.31.21.46.19.83.47,1.13.83.41.52.63,1.17.63,1.88,0,.47-.1.92-.28,1.33-.26.56-.69,1.04-1.26,1.31-.43.2-1.02.32-1.52.32h-1.85v2.23h-1.91v-8.1ZM55.85,43.14c.34,0,.59-.08.73-.15.43-.2.53-.61.53-1.01,0-.44-.15-.8-.62-1-.16-.07-.44-.11-.74-.11h-1.59v2.27h1.69Z"/>
+            <path class="njp2" d="M69.71,47.16h-2l-.6-1.59h-3.62l-.59,1.59h-1.95l3.02-8.1h2.62l3.12,8.1ZM66.47,43.85l-1.18-3.15-1.16,3.15h2.34Z"/>
+            <path class="njp2" d="M72.3,39.06h1.88l3.43,4.85v-4.85h1.92v8.1h-1.89l-3.43-4.86v4.86h-1.91v-8.1Z"/>
+          </svg>
+        </div>
+        <div class="about__logo-item">
+          <!-- NHN PlayArt (colorful) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 44.84" aria-label="NHN PlayArt">
+            <style>
+              .pa1{fill:#ff1300}.pa2{fill:#00abb5}.pa3{fill:#ffa200}.pa4{fill:#ff009e}
+              .pa5{fill:#191919}.pa6{fill:#00ce00}.pa7{fill:#009dff}.pa8{fill:#c334ff}
+            </style>
+            <path class="pa4" d="M13.11,25.18v6.55h-6.55v-6.55h6.55v-6.07c0-.26-.21-.48-.48-.48H.48c-.26,0-.48.21-.48.48v25.25c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-6.07h12.63c.26,0,.48-.21.48-.48v-12.15c0-.26-.21-.48-.48-.48h-6.07Z"/>
+            <path class="pa8" d="M30.3,18.63h-5.59c-.26,0-.48.21-.48.48v18.7c0,.26.21.48.48.48h6.07v-19.18c0-.26-.21-.48-.48-.48Z"/>
+            <path class="pa8" d="M43.4,38.29h-12.63v6.07c0,.26.21.48.48.48h12.15c.26,0,.48-.21.48-.48v-5.59c0-.26-.21-.48-.48-.48Z"/>
+            <path class="pa7" d="M61.55,18.63h-6.07c-.26,0-.48.21-.48.48v6.07h6.55v6.55h-6.55v-6.55h-6.07c-.26,0-.48.21-.48.48v18.7c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-6.07h6.55v6.07c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-25.25c0-.26-.21-.48-.48-.48h-6.07Z"/>
+            <path class="pa2" d="M164.52,18.63h-18.7c-.26,0-.48.21-.48.48v5.59c0,.26.21.48.48.48h6.07v19.18c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-19.18h6.07c.26,0,.48-.21.48-.48v-5.59c0-.26-.21-.48-.48-.48Z"/>
+            <path class="pa6" d="M140.78,19.11v12.15c0,.26-.21.48-.48.48h-6.07v-6.55h-6.55v6.55h6.55v6.55h-6.55v6.07c0,.26-.21.48-.48.48h-5.59c-.26,0-.48-.21-.48-.48v-25.25c0-.26.21-.48.48-.48h18.7c.26,0,.48.21.48.48ZM134.7,44.84h5.59c.26,0,.48-.21.48-.48v-5.59c0-.26-.21-.48-.48-.48h-6.07v6.07c0,.26.21.48.48.48Z"/>
+            <path class="pa1" d="M103.93,18.63c-.26,0-.48.21-.48.48v6.07h6.55v6.55h-6.55v-6.55h-6.07c-.26,0-.48.21-.48.48v18.7c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-6.07h6.55v6.07c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-25.25c0-.26-.21-.48-.48-.48h-12.15Z"/>
+            <path class="pa3" d="M78.74,18.63h-5.59c-.26,0-.48.21-.48.48v12.15c0,.26.21.48.48.48h6.07v-12.63c0-.26-.21-.48-.48-.48Z"/>
+            <path class="pa3" d="M91.85,18.63h-5.59c-.26,0-.48.21-.48.48v12.63h-6.55v6.07c0,.26.21.48.48.48h6.07v6.07c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-25.25c0-.26-.21-.48-.48-.48Z"/>
+            <polygon class="pa5" points="25.46 10.59 27.9 10.59 27.9 .26 25.46 .26 25.46 4.24 21.05 4.24 21.05 .26 18.61 .26 18.61 10.59 21.05 10.59 21.05 6.8 21.05 6.6 25.46 6.61 25.46 6.8 25.46 10.59"/>
+            <polygon class="pa5" points="6.81 6.46 2.2 0 0 1.14 0 10.6 2.39 10.6 2.39 4.37 7.22 10.93 7.23 10.93 9.22 9.89 9.22 .27 6.81 .27 6.81 6.46"/>
+            <polygon class="pa5" points="39.67 4.37 44.51 10.93 44.52 10.93 46.51 9.89 46.51 .27 44.1 .27 44.1 6.46 39.48 0 37.29 1.14 37.29 10.6 39.67 10.6 39.67 4.37"/>
+          </svg>
+        </div>
+        <div class="about__logo-item">
+          <!-- NHN Techorus -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.39 38.67" aria-label="NHN Techorus">
+            <style>.tc1{fill:#181818}.tc2{fill:#191919}.tc3{fill:#0027b1}</style>
+            <polygon class="tc2" points="22.16 9.22 24.29 9.22 24.29 .23 22.16 .23 22.16 3.69 18.32 3.69 18.32 .23 16.2 .23 16.2 9.22 18.32 9.22 18.32 5.91 18.32 5.74 22.16 5.75 22.16 5.91 22.16 9.22"/>
+            <polygon class="tc2" points="5.93 5.62 1.91 0 0 .99 0 9.22 2.08 9.22 2.08 3.8 6.28 9.52 6.29 9.52 8.03 8.61 8.03 .23 5.93 .23 5.93 5.62"/>
+            <polygon class="tc2" points="34.53 3.8 38.74 9.52 38.75 9.52 40.48 8.61 40.48 .23 38.38 .23 38.38 5.62 34.37 0 32.46 .99 32.46 9.22 34.53 9.22 34.53 3.8"/>
+            <path class="tc1" d="M21.95,16.18h16.48v4.86h-11.31v3.59l9.97-.03v4.83l-9.97.03v3.68h11.31v4.86h-16.48v-21.83Z"/>
+            <path class="tc1" d="M43.69,34.75c-1.73-2.01-2.74-4.65-2.74-7.63,0-3.56,1.4-6.6,3.77-8.69,2.07-1.79,4.83-2.83,7.96-2.83,2.04,0,3.83.36,5.29,1.03,1.25.58,2.58,1.58,3.71,2.98l-3.77,3.16c-.79-.79-1.58-1.37-2.52-1.73-.79-.3-1.67-.49-2.58-.49-1.92,0-3.25.55-4.41,1.49-1.43,1.19-2.28,2.95-2.28,5.08,0,1.82.61,3.47,1.7,4.62,1.19,1.28,2.98,1.95,4.99,1.95,1.03,0,2.01-.21,2.8-.58,1-.43,1.85-1.09,2.61-2.04l3.8,2.86c-1,1.46-2.13,2.58-3.53,3.37-1.55.88-3.43,1.34-5.81,1.34-3.71,0-6.87-1.49-9-3.89Z"/>
+            <path class="tc1" d="M85.04,38.07h-5.17v-8.45h-9.33v8.45h-5.17v-21.89h5.17v8.42h9.33v-8.42h5.17v21.89Z"/>
+            <path class="tc1" d="M91.92,35.48c-2.16-2.07-3.37-5.02-3.37-8.33s1.22-6.26,3.37-8.33c2.1-2.01,4.95-3.19,8.18-3.19s6.08,1.19,8.18,3.19c2.16,2.07,3.37,5.02,3.37,8.33s-1.22,6.26-3.37,8.33c-2.1,2.01-4.95,3.19-8.18,3.19s-6.08-1.19-8.18-3.19ZM104.81,31.71c1.06-1.19,1.67-2.71,1.67-4.56s-.61-3.37-1.67-4.56c-1.16-1.25-2.74-1.98-4.71-1.98s-3.59.73-4.74,1.98c-1.06,1.19-1.64,2.71-1.64,4.56s.61,3.37,1.67,4.56c1.16,1.25,2.74,1.98,4.71,1.98s3.56-.73,4.71-1.98Z"/>
+            <path class="tc1" d="M115.15,16.18h9.7c.4,0,1.49.09,1.88.15,1.82.3,2.61.76,3.62,1.49,2.01,1.46,2.86,3.65,2.86,6.17,0,2.31-.94,4.59-2.89,6.11l3.19,7.96h-5.62l-2.55-6.32c-1.58.06-3.89.03-5.02,0v6.32h-5.17v-21.89ZM124.4,26.97c.88,0,1.85-.24,2.31-.55.76-.52,1.25-1.43,1.25-2.43,0-1.06-.36-1.95-1.28-2.49-.52-.3-1.64-.4-2.1-.4h-4.26v5.87h4.07Z"/>
+            <path class="tc1" d="M141.09,37.55c-1.92-1-3.22-2.49-3.98-4.47-.36-1-.55-2.31-.55-3.53v-13.37h5.17v12.71c0,.58.15,1.67.3,2.1.36,1.06.94,1.76,1.76,2.16,1.03.49,1.88.52,2.34.52s1.31-.03,2.34-.52c.82-.4,1.4-1.09,1.76-2.16.15-.43.3-1.52.3-2.1v-12.71h5.17v13.37c0,1.22-.18,2.52-.55,3.53-.76,1.98-2.07,3.47-3.98,4.47-1.4.73-3.16,1.12-5.05,1.12s-3.65-.4-5.05-1.12Z"/>
+            <path class="tc1" d="M164.08,38.04c-2.07-.64-3.56-1.64-5.23-3.31l2.92-3.8c1.25,1.03,2.13,1.7,3.07,2.16,1.06.52,2.07.73,3.25.73.76,0,1.34-.09,1.82-.27.67-.24,1.25-.7,1.28-1.43.06-.85-.4-1.37-1.22-1.79-.55-.27-1.34-.49-2.37-.73-1.43-.33-2.98-.73-4.32-1.49-1.06-.61-1.88-1.34-2.46-2.22-.67-1.03-.97-2.16-1.03-3.31-.03-.94.15-1.85.55-2.74.64-1.4,1.76-2.52,3.16-3.25,1.37-.73,2.8-1,4.35-1.03,1.76-.03,3.25.15,4.53.64,1.52.58,2.8,1.4,4.01,2.74l-3.22,3.47c-.82-.76-1.49-1.22-2.31-1.55-.79-.3-1.67-.43-2.77-.43-.33,0-1.19.06-1.67.21-.88.3-1.4.82-1.46,1.67-.03.43,0,.82.33,1.25.55.67,2.01,1,3.43,1.37,1.49.4,3.47.97,4.77,1.82,1.25.79,1.98,1.67,2.49,3.04.33.88.36,1.67.36,2.52,0,1.37-.67,2.83-1.58,3.83-1.49,1.67-3.86,2.55-6.54,2.55-1.55,0-3.1-.33-4.16-.64Z"/>
+            <polygon class="tc3" points="6.72 16.16 0 16.15 0 21.16 6.72 21.16 6.72 16.16"/>
+            <polygon class="tc1" points="6.72 16.16 6.72 21.16 6.72 38.07 11.88 38.07 11.88 21.16 18.6 21.16 18.6 16.18 6.72 16.16"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clay 3D about illustration -->
+    <div class="about__visual">
+      <img src="./images/glass.png" alt="About the Event" width="380" height="340" style="display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTER CARDS ══ -->
+<section class="features sec" id="features">
+  <div class="sec-inner">
+    <span class="sec-label">Event Contents</span>
+    <h2 class="sec-title">５つのコンテンツで<br>NHNグループを知ろう</h2>
+
+    <div class="features__grid">
+
+      <!-- Ch 1 – Group Session (wide) -->
+      <div class="ch-card ch-card--wide">
+        <div class="ch-card__corner" style="background:var(--teal-lt);"></div>
+        <div class="ch-card__inner">
+          <div>
+            <span class="ch-num">Chapter 1 &nbsp;·&nbsp; GROUP SESSION</span>
+            <div class="ch-tags">
+              <span class="ch-tag">グループ理解</span>
+              <span class="ch-tag">つながる</span>
+              <span class="ch-tag">全体像を知る</span>
+            </div>
+            <div class="ch-title">グループ全体を知る・つながる</div>
+            <div class="ch-desc">NHN JAPAN / NHN PlayArt / NHN Techorus それぞれの事業・文化・キャリアパスを一度に把握できる全体セッション。グループの"今"と"これから"を担当者が分かりやすく解説します。</div>
+          </div>
+          <div class="ch-card__illus-wrap">
+            <img src="./images/group.png" alt="グループセッション" width="210" height="190" style="display:block;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Ch 2 – Booth Tour -->
+      <div class="ch-card">
+        <div class="ch-card__corner" style="background:var(--yel-lt);"></div>
+        <span class="ch-num">Chapter 2 &nbsp;·&nbsp; BOOTH TOUR</span>
+        <div class="ch-tags"><span class="ch-tag">自由回遊</span><span class="ch-tag">深掘り</span></div>
+        <div class="ch-card__header" style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+          <div>
+            <div class="ch-title">自由に回って<br>もっと深く知る</div>
+            <div class="ch-desc">NHN JAPAN・NHN PlayArt・NHN Techorus 各社のブースをじっくり見学。職種別ブースも設置しています。</div>
+          </div>
+          <div class="ch-card__illus-wrap" style="flex-shrink:0;width:120px;">
+            <img src="./images/board.png" alt="ブースツアー" width="120" height="130" style="display:block;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Ch 3 – Career Consult -->
+      <div class="ch-card">
+        <div class="ch-card__corner" style="background:var(--cor-lt);"></div>
+        <span class="ch-num">Chapter 3 &nbsp;·&nbsp; CAREER CONSULT</span>
+        <div class="ch-tags"><span class="ch-tag">1on1トーク</span><span class="ch-tag">キャリア相談</span></div>
+        <div class="ch-card__header" style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+          <div>
+            <div class="ch-title">社員と話して<br>キャリアを考える</div>
+            <div class="ch-desc">気になる社員に直接キャリア相談できる時間。職種・入社経緯・日常業務まで何でも聞いてみよう！</div>
+          </div>
+          <div class="ch-card__illus-wrap" style="flex-shrink:0;width:100px;">
+            <img src="./images/yellow.png" alt="キャリアコンサルト" width="120" height="130" style="display:block;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Ch 4 – Café Lounge -->
+      <div class="ch-card">
+        <div class="ch-card__corner" style="background:var(--gre-lt);"></div>
+        <span class="ch-num">Chapter 4 &nbsp;·&nbsp; CAFÉ LOUNGE</span>
+        <div class="ch-tags"><span class="ch-tag">リラックス</span><span class="ch-tag">フリートーク</span></div>
+        <div class="ch-card__header" style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+          <div>
+            <div class="ch-title">気軽に話せる<br>リラックス空間</div>
+            <div class="ch-desc">軽食とドリンクを楽しみながら社員とフラットに交流。ブースとは違うオフな雰囲気で会話できます。</div>
+          </div>
+          <div class="ch-card__illus-wrap" style="flex-shrink:0;width:100px;">
+            <img src="./images/cafe.png" alt="カフェラウンジ" width="120" height="130" style="display:block;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Ch 5 – Present -->
+      <div class="ch-card" style="background:var(--dark);border-color:var(--dark);">
+        <div class="ch-card__corner" style="background:rgba(255,255,255,.08);"></div>
+        <span class="ch-num" style="color:var(--yellow);">Chapter 5 &nbsp;·&nbsp; PRESENT</span>
+        <div class="ch-tags">
+          <span class="ch-tag" style="border-color:rgba(255,255,255,.35);color:#fff;">参加者限定</span>
+          <span class="ch-tag" style="border-color:rgba(255,255,255,.35);color:#fff;">ノベルティ</span>
+        </div>
+        <div class="ch-card__header" style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;">
+          <div>
+            <div class="ch-title" style="color:#fff;">参加者限定の<br>ノベルティをご用意！</div>
+            <div class="ch-desc" style="color:rgba(255,255,255,.65);">当日ご参加いただいた方全員に、NHNグループオリジナルのノベルティをプレゼント。お楽しみに！</div>
+          </div>
+          <div class="ch-card__illus-wrap" style="flex-shrink:0;width:100px;">
+            <img src="./images/gift.png" alt="プレゼント" width="120" height="130" style="display:block;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAM ══ -->
+<section class="program sec" id="program">
+  <div class="sec-inner">
+    <div class="program__grid">
+      <div>
+        <span class="sec-label">Program</span>
+        <h2 class="sec-title">タイム<br>スケジュール</h2>
+        <p style="font-size:14px;font-weight:400;line-height:1.95;color:#555;">当日は受付後すぐにグループ全体説明からスタート。その後は自由にブースを回って、じっくり話を聞いてみてください。</p>
+
+        <!-- Clock illustration -->
+        <img src="./images/clock.png" alt="タイムスケジュール" width="290" height="290" style="margin-top:28px;display:block;">
+      </div>
+
+      <!-- Redesigned timeline: no overlap -->
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">13:45</div>
+          <div class="tl-title">開場・受付</div>
+          <div class="tl-desc">会場にお越しください。受付でお名前をお伝えいただきます。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:00 – 14:20</div>
+          <div class="tl-title">グループ全体説明</div>
+          <div class="tl-desc">NHN JAPANグループの事業・文化・キャリアパスについて担当者がお伝えします。</div>
+          <span class="tl-badge">Group Session</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:20 – 16:00</div>
+          <div class="tl-title">ブース自由回遊</div>
+          <div class="tl-desc">NHN JAPAN / NHN PlayArt / NHN Techorus 各社のブースを自由に訪問。社員に直接質問・キャリア相談もできます。</div>
+          <span class="tl-badge">Booth Tour &amp; Career Consult</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">16:00 – 16:30</div>
+          <div class="tl-title">カフェラウンジ・クロージング</div>
+          <div class="tl-desc">軽食を楽しみながら社員と自由に交流。参加者限定ノベルティをプレゼント！</div>
+          <span class="tl-badge">Café Lounge &amp; Present</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">16:30</div>
+          <div class="tl-title">閉会</div>
+          <div class="tl-desc">個別相談は終了後も受け付けます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOR WHOM ══ -->
+<section class="forwhom sec" id="forwhom">
+  <div class="forwhom__inner">
+    <div>
+      <span class="sec-label">For Whom</span>
+      <h2 class="sec-title">こんな方に<br><span style="color:var(--teal)">おすすめ！</span></h2>
+      <ul class="cklist">
+        <li><span class="ck-icon">✓</span>ゲーム・IT・クラウド業界に興味がある</li>
+        <li><span class="ck-icon">✓</span>若手から挑戦できる環境を知りたい</li>
+        <li><span class="ck-icon">✓</span>自分に合う会社や職種を比較したい</li>
+        <li><span class="ck-icon">✓</span>社員のリアルな声や雰囲気を知りたい</li>
+        <li><span class="ck-icon">✓</span>就活の方向性を整理したい</li>
+        <li><span class="ck-icon">✓</span>グループ会社の違いが気になる</li>
+      </ul>
+    </div>
+
+    <!-- For Whom illustration -->
+    <div style="display:flex;justify-content:center;align-items:center;">
+      <img src="./images/career.png" alt="For Whom" width="360" height="340" style="display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- ══ JOBS ══ -->
+<section class="jobs-sec sec" id="jobs">
+  <div class="sec-inner">
+    <span class="sec-label">Open Positions</span>
+    <h2 class="sec-title">対象求人一覧</h2>
+    <p style="font-size:14px;color:#555;line-height:1.9;margin-bottom:48px;">イベント当日にブースで話せる社員が担う職種の求人一覧です。<br>気になる求人をクリックして詳細を確認し、当日直接聞いてみよう！</p>
+
+    <!-- ── NHN JAPAN ── -->
+    <div class="jobs-co">
+      <div class="jobs-co__hd">
+        <div class="jobs-co__logo-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 114.29 47.39" aria-label="NHN JAPAN">
+            <style>.njj{fill:#191919}</style>
+            <polygon class="njj" points="62.57 26.02 68.57 26.02 68.57 .64 62.57 .64 62.57 10.42 51.72 10.42 51.72 .64 45.73 .64 45.73 26.02 51.72 26.02 51.72 16.7 51.72 16.21 62.57 16.24 62.57 16.7 62.57 26.02"/>
+            <polygon class="njj" points="16.73 15.88 5.39 0 0 2.8 0 26.04 5.86 26.04 5.86 10.73 17.74 26.87 17.77 26.87 22.66 24.3 22.66 .66 16.73 .66 16.73 15.88"/>
+            <polygon class="njj" points="97.5 10.73 109.38 26.87 109.4 26.87 114.29 24.3 114.29 .66 108.37 .66 108.37 15.88 97.03 0 91.63 2.8 91.63 26.04 97.5 26.04 97.5 10.73"/>
+            <path class="njj" d="M34.38,47.21c-.34-.12-.74-.32-1.13-.79-.18-.23-.32-.47-.47-.83l1.7-.81c.09.2.21.43.34.55.15.16.36.21.59.21.2,0,.46-.11.57-.3.09-.16.15-.35.16-.69v-.35s.01-5.14.01-5.14h1.92v5.47c0,.38-.03.74-.14,1.07-.24.73-.71,1.24-1.4,1.56-.35.16-.79.22-1.19.22-.33,0-.65-.06-.97-.18Z"/>
+            <path class="njj" d="M49.59,47.16h-2l-.6-1.59h-3.62l-.59,1.59h-1.95l3.02-8.1h2.62l3.12,8.1ZM46.35,43.85l-1.18-3.15-1.16,3.15h2.34Z"/>
+            <path class="njj" d="M52.25,39.06h3.76c.42,0,.96.07,1.31.21.46.19.83.47,1.13.83.41.52.63,1.17.63,1.88,0,.47-.1.92-.28,1.33-.26.56-.69,1.04-1.26,1.31-.43.2-1.02.32-1.52.32h-1.85v2.23h-1.91v-8.1ZM55.85,43.14c.34,0,.59-.08.73-.15.43-.2.53-.61.53-1.01,0-.44-.15-.8-.62-1-.16-.07-.44-.11-.74-.11h-1.59v2.27h1.69Z"/>
+            <path class="njj" d="M69.71,47.16h-2l-.6-1.59h-3.62l-.59,1.59h-1.95l3.02-8.1h2.62l3.12,8.1ZM66.47,43.85l-1.18-3.15-1.16,3.15h2.34Z"/>
+            <path class="njj" d="M72.3,39.06h1.88l3.43,4.85v-4.85h1.92v8.1h-1.89l-3.43-4.86v4.86h-1.91v-8.1Z"/>
+          </svg>
+          <span class="jobs-co__badge" style="background:var(--dark);">管理部門</span>
+        </div>
+        <p class="jobs-co__desc">NHNグループ全体の経営管理・事業支援を担うグループの中核企業。人事・法務・財務・IT基盤など、グループ横断の機能を一手に担い、各社の事業成長をバックオフィスから支えています。</p>
+      </div>
+      <ul class="jobs-list">
+        <li><a href="https://recruit.nhn-japan.com/recruits/japan/4224748803724930000?type=list&jobGroupId=10000004" target="_blank" rel="noopener">
+          <span>法務（IT情報セキュリティ）</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.nhn-japan.com/recruits/japan/4224744689121172999?type=list&jobGroupId=10000004" target="_blank" rel="noopener">
+          <span>人事（教育）</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.nhn-japan.com/recruits/japan/4219948609268649146?type=list&jobGroupId=10000004" target="_blank" rel="noopener">
+          <span>人事企画</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.nhn-japan.com/recruits/japan/4224747046219279159?type=list&jobGroupId=10000004" target="_blank" rel="noopener">
+          <span>財務・経理</span><span class="jobs-arrow">→</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <!-- ── NHN PlayArt ── -->
+    <div class="jobs-co">
+      <div class="jobs-co__hd">
+        <div class="jobs-co__logo-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 44.84" aria-label="NHN PlayArt" style="height:32px;">
+            <style>
+              .paj1{fill:#ff1300}.paj2{fill:#00abb5}.paj3{fill:#ffa200}.paj4{fill:#ff009e}
+              .paj5{fill:#191919}.paj6{fill:#00ce00}.paj7{fill:#009dff}.paj8{fill:#c334ff}
+            </style>
+            <path class="paj4" d="M13.11,25.18v6.55h-6.55v-6.55h6.55v-6.07c0-.26-.21-.48-.48-.48H.48c-.26,0-.48.21-.48.48v25.25c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-6.07h12.63c.26,0,.48-.21.48-.48v-12.15c0-.26-.21-.48-.48-.48h-6.07Z"/>
+            <path class="paj8" d="M30.3,18.63h-5.59c-.26,0-.48.21-.48.48v18.7c0,.26.21.48.48.48h6.07v-19.18c0-.26-.21-.48-.48-.48Z"/>
+            <path class="paj8" d="M43.4,38.29h-12.63v6.07c0,.26.21.48.48.48h12.15c.26,0,.48-.21.48-.48v-5.59c0-.26-.21-.48-.48-.48Z"/>
+            <path class="paj7" d="M61.55,18.63h-6.07c-.26,0-.48.21-.48.48v6.07h6.55v6.55h-6.55v-6.55h-6.07c-.26,0-.48.21-.48.48v18.7c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-6.07h6.55v6.07c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-25.25c0-.26-.21-.48-.48-.48h-6.07Z"/>
+            <path class="paj2" d="M164.52,18.63h-18.7c-.26,0-.48.21-.48.48v5.59c0,.26.21.48.48.48h6.07v19.18c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-19.18h6.07c.26,0,.48-.21.48-.48v-5.59c0-.26-.21-.48-.48-.48Z"/>
+            <path class="paj6" d="M140.78,19.11v12.15c0,.26-.21.48-.48.48h-6.07v-6.55h-6.55v6.55h6.55v6.55h-6.55v6.07c0,.26-.21.48-.48.48h-5.59c-.26,0-.48-.21-.48-.48v-25.25c0-.26.21-.48.48-.48h18.7c.26,0,.48.21.48.48ZM134.7,44.84h5.59c.26,0,.48-.21.48-.48v-5.59c0-.26-.21-.48-.48-.48h-6.07v6.07c0,.26.21.48.48.48Z"/>
+            <path class="paj1" d="M103.93,18.63c-.26,0-.48.21-.48.48v6.07h6.55v6.55h-6.55v-6.55h-6.07c-.26,0-.48.21-.48.48v18.7c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-6.07h6.55v6.07c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-25.25c0-.26-.21-.48-.48-.48h-12.15Z"/>
+            <path class="paj3" d="M78.74,18.63h-5.59c-.26,0-.48.21-.48.48v12.15c0,.26.21.48.48.48h6.07v-12.63c0-.26-.21-.48-.48-.48Z"/>
+            <path class="paj3" d="M91.85,18.63h-5.59c-.26,0-.48.21-.48.48v12.63h-6.55v6.07c0,.26.21.48.48.48h6.07v6.07c0,.26.21.48.48.48h5.59c.26,0,.48-.21.48-.48v-25.25c0-.26-.21-.48-.48-.48Z"/>
+            <polygon class="paj5" points="25.46 10.59 27.9 10.59 27.9 .26 25.46 .26 25.46 4.24 21.05 4.24 21.05 .26 18.61 .26 18.61 10.59 21.05 10.59 21.05 6.8 21.05 6.6 25.46 6.61 25.46 6.8 25.46 10.59"/>
+            <polygon class="paj5" points="6.81 6.46 2.2 0 0 1.14 0 10.6 2.39 10.6 2.39 4.37 7.22 10.93 7.23 10.93 9.22 9.89 9.22 .27 6.81 .27 6.81 6.46"/>
+            <polygon class="paj5" points="39.67 4.37 44.51 10.93 44.52 10.93 46.51 9.89 46.51 .27 44.1 .27 44.1 6.46 39.48 0 37.29 1.14 37.29 10.6 39.67 10.6 39.67 4.37"/>
+          </svg>
+          <span class="jobs-co__badge" style="background:var(--coral);">ゲーム・エンタメ</span>
+        </div>
+        <p class="jobs-co__desc">「LINE：ディズニー ツムツム」「妖怪ウォッチ ぷにぷに」「#コンパス」など、累計数千万DLの人気スマホゲームを開発・運営するエンターテインメント企業。企画・開発・デザインの専門家が集まり、世界中のユーザーに楽しさを届けています。</p>
+      </div>
+      <ul class="jobs-list">
+        <li><a href="https://recruit.nhn-japan.com/recruits/playart/4224750460080745542?type=list" target="_blank" rel="noopener">
+          <span>総合職（企画）</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.nhn-japan.com/recruits/playart/4224751891579923651?type=list" target="_blank" rel="noopener">
+          <span>ゲームプランナー</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.nhn-japan.com/recruits/playart/4224753762348638413?type=list" target="_blank" rel="noopener">
+          <span>ゲームグラフィックデザイナー</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.nhn-japan.com/recruits/playart/4224752646856712254?type=list" target="_blank" rel="noopener">
+          <span>ゲームプログラマ</span><span class="jobs-arrow">→</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <!-- ── NHN Techorus ── -->
+    <div class="jobs-co">
+      <div class="jobs-co__hd">
+        <div class="jobs-co__logo-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.39 38.67" aria-label="NHN Techorus">
+            <style>.tcj1{fill:#181818}.tcj2{fill:#191919}.tcj3{fill:#0027b1}</style>
+            <polygon class="tcj2" points="22.16 9.22 24.29 9.22 24.29 .23 22.16 .23 22.16 3.69 18.32 3.69 18.32 .23 16.2 .23 16.2 9.22 18.32 9.22 18.32 5.91 18.32 5.74 22.16 5.75 22.16 5.91 22.16 9.22"/>
+            <polygon class="tcj2" points="5.93 5.62 1.91 0 0 .99 0 9.22 2.08 9.22 2.08 3.8 6.28 9.52 6.29 9.52 8.03 8.61 8.03 .23 5.93 .23 5.93 5.62"/>
+            <polygon class="tcj2" points="34.53 3.8 38.74 9.52 38.75 9.52 40.48 8.61 40.48 .23 38.38 .23 38.38 5.62 34.37 0 32.46 .99 32.46 9.22 34.53 9.22 34.53 3.8"/>
+            <path class="tcj1" d="M21.95,16.18h16.48v4.86h-11.31v3.59l9.97-.03v4.83l-9.97.03v3.68h11.31v4.86h-16.48v-21.83Z"/>
+            <path class="tcj1" d="M43.69,34.75c-1.73-2.01-2.74-4.65-2.74-7.63,0-3.56,1.4-6.6,3.77-8.69,2.07-1.79,4.83-2.83,7.96-2.83,2.04,0,3.83.36,5.29,1.03,1.25.58,2.58,1.58,3.71,2.98l-3.77,3.16c-.79-.79-1.58-1.37-2.52-1.73-.79-.3-1.67-.49-2.58-.49-1.92,0-3.25.55-4.41,1.49-1.43,1.19-2.28,2.95-2.28,5.08,0,1.82.61,3.47,1.7,4.62,1.19,1.28,2.98,1.95,4.99,1.95,1.03,0,2.01-.21,2.8-.58,1-.43,1.85-1.09,2.61-2.04l3.8,2.86c-1,1.46-2.13,2.58-3.53,3.37-1.55.88-3.43,1.34-5.81,1.34-3.71,0-6.87-1.49-9-3.89Z"/>
+            <path class="tcj1" d="M85.04,38.07h-5.17v-8.45h-9.33v8.45h-5.17v-21.89h5.17v8.42h9.33v-8.42h5.17v21.89Z"/>
+            <path class="tcj1" d="M91.92,35.48c-2.16-2.07-3.37-5.02-3.37-8.33s1.22-6.26,3.37-8.33c2.1-2.01,4.95-3.19,8.18-3.19s6.08,1.19,8.18,3.19c2.16,2.07,3.37,5.02,3.37,8.33s-1.22,6.26-3.37,8.33c-2.1,2.01-4.95,3.19-8.18,3.19s-6.08-1.19-8.18-3.19ZM104.81,31.71c1.06-1.19,1.67-2.71,1.67-4.56s-.61-3.37-1.67-4.56c-1.16-1.25-2.74-1.98-4.71-1.98s-3.59.73-4.74,1.98c-1.06,1.19-1.64,2.71-1.64,4.56s.61,3.37,1.67,4.56c1.16,1.25,2.74,1.98,4.71,1.98s3.56-.73,4.71-1.98Z"/>
+            <path class="tcj1" d="M115.15,16.18h9.7c.4,0,1.49.09,1.88.15,1.82.3,2.61.76,3.62,1.49,2.01,1.46,2.86,3.65,2.86,6.17,0,2.31-.94,4.59-2.89,6.11l3.19,7.96h-5.62l-2.55-6.32c-1.58.06-3.89.03-5.02,0v6.32h-5.17v-21.89ZM124.4,26.97c.88,0,1.85-.24,2.31-.55.76-.52,1.25-1.43,1.25-2.43,0-1.06-.36-1.95-1.28-2.49-.52-.3-1.64-.4-2.1-.4h-4.26v5.87h4.07Z"/>
+            <path class="tcj1" d="M141.09,37.55c-1.92-1-3.22-2.49-3.98-4.47-.36-1-.55-2.31-.55-3.53v-13.37h5.17v12.71c0,.58.15,1.67.3,2.1.36,1.06.94,1.76,1.76,2.16,1.03.49,1.88.52,2.34.52s1.31-.03,2.34-.52c.82-.4,1.4-1.09,1.76-2.16.15-.43.3-1.52.3-2.1v-12.71h5.17v13.37c0,1.22-.18,2.52-.55,3.53-.76,1.98-2.07,3.47-3.98,4.47-1.4.73-3.16,1.12-5.05,1.12s-3.65-.4-5.05-1.12Z"/>
+            <path class="tcj1" d="M164.08,38.04c-2.07-.64-3.56-1.64-5.23-3.31l2.92-3.8c1.25,1.03,2.13,1.7,3.07,2.16,1.06.52,2.07.73,3.25.73.76,0,1.34-.09,1.82-.27.67-.24,1.25-.7,1.28-1.43.06-.85-.4-1.37-1.22-1.79-.55-.27-1.34-.49-2.37-.73-1.43-.33-2.98-.73-4.32-1.49-1.06-.61-1.88-1.34-2.46-2.22-.67-1.03-.97-2.16-1.03-3.31-.03-.94.15-1.85.55-2.74.64-1.4,1.76-2.52,3.16-3.25,1.37-.73,2.8-1,4.35-1.03,1.76-.03,3.25.15,4.53.64,1.52.58,2.8,1.4,4.01,2.74l-3.22,3.47c-.82-.76-1.49-1.22-2.31-1.55-.79-.3-1.67-.43-2.77-.43-.33,0-1.19.06-1.67.21-.88.3-1.4.82-1.46,1.67-.03.43,0,.82.33,1.25.55.67,2.01,1,3.43,1.37,1.49.4,3.47.97,4.77,1.82,1.25.79,1.98,1.67,2.49,3.04.33.88.36,1.67.36,2.52,0,1.37-.67,2.83-1.58,3.83-1.49,1.67-3.86,2.55-6.54,2.55-1.55,0-3.1-.33-4.16-.64Z"/>
+            <polygon class="tcj3" points="6.72 16.16 0 16.15 0 21.16 6.72 21.16 6.72 16.16"/>
+            <polygon class="tcj1" points="6.72 16.16 6.72 21.16 6.72 38.07 11.88 38.07 11.88 21.16 18.6 21.16 18.6 16.18 6.72 16.16"/>
+          </svg>
+          <span class="jobs-co__badge" style="background:#0027b1;">クラウド・DX</span>
+        </div>
+        <p class="jobs-co__desc">AWS・Google Cloud最上位パートナーとして、クラウド総合支援サービス「C-Chorus」を展開。クラウド導入・運用から生成AI・データ分析の活用まで、企業のデジタル変革（DX）を幅広く支援しています。</p>
+      </div>
+      <ul class="jobs-list">
+        <li><a href="https://recruit.jobcan.jp/nhn-techorus/job_offers/2210357" target="_blank" rel="noopener">
+          <span>総合職</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.jobcan.jp/nhn-techorus/job_offers/2210356" target="_blank" rel="noopener">
+          <span>クラウドエンジニア</span><span class="jobs-arrow">→</span>
+        </a></li>
+        <li><a href="https://recruit.jobcan.jp/nhn-techorus/job_offers/2210354" target="_blank" rel="noopener">
+          <span>開発エンジニア</span><span class="jobs-arrow">→</span>
+        </a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-sec" id="apply">
+  <div style="position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(0,0,0,.08);top:-140px;right:-80px;pointer-events:none;"></div>
+  <div style="position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(0,0,0,.07);bottom:-70px;left:-50px;pointer-events:none;"></div>
+  <span class="sp sp--y" style="position:absolute;top:14%;left:6%;font-size:24px;animation-delay:.3s">✦</span>
+  <span class="sp sp--y" style="position:absolute;bottom:18%;right:8%;font-size:18px;animation-delay:1.2s">✧</span>
+
+  <div class="cta-sec__inner">
+    <!-- Entry illustration -->
+    <img src="./images/signup.png" alt="Entry" width="180" height="140" style="display:block;margin-bottom:12px;margin-left:auto;margin-right:auto;">
+
+    <span style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75);display:block;margin-bottom:12px;">Entry</span>
+    <h2>参加を申し込む</h2>
+    <p>お申し込み後すぐに参加が確定します。<br>ぜひお気軽にご応募ください！</p>
+    <div class="cta-deadline">⏰ 申し込み締め切り：2026年6月1日（月）12:00</div><br>
+    <a href="https://forms.gle/8YAdzRfM3yjm7cv7A" target="_blank" rel="noopener" class="cta-btn">📋 &nbsp;Google フォームから申し込む</a>
+    <p class="cta-note">ご入力いただいた情報は本イベントの運営のみに使用します。</p>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq sec" id="faq">
+  <div class="faq__inner">
+    <div class="faq__hd">
+      <span class="sec-label">FAQ</span>
+      <h2 class="sec-title">よくある質問</h2>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qi">Q</span><span>服装に決まりはありますか？</span></div>
+      <p class="faq-a">服装の規定はありません。スーツ・私服どちらでも構いません。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qi">Q</span><span>途中参加・途中退場はできますか？</span></div>
+      <p class="faq-a">途中参加・退場も可能です。ただし、グループ全体説明（14:00〜14:20）はぜひご参加ください。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qi">Q</span><span>選考に関係しますか？</span></div>
+      <p class="faq-a">本イベントへの参加が選考に影響することは一切ありません。気軽にご参加ください。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-qi">Q</span><span>会場へのアクセスを教えてください。</span></div>
+      <p class="faq-a">■ 最寄り駅<br>日比谷線虎ノ門ヒルズ駅より徒歩4分（A1、A2番出口）<br>銀座線虎ノ門駅より徒歩7分（1番または9番出口）<br>三田線御成門駅より徒歩7分（A5番出口）<br>JR新橋駅より徒歩15分</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <div class="footer__brand">NHN <span class="t">CAREER</span> LOUNGE</div>
+      <div style="font-size:12px;margin-top:4px;font-style:italic;color:rgba(255,255,255,.3);">Meet your future.</div>
+    </div>
+    <div class="footer__cos">NHN JAPAN &nbsp;/&nbsp; NHN PlayArt &nbsp;/&nbsp; NHN Techorus</div>
+    <div class="footer__copy">© 2026 NHN Japan Corp. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Floating CTA button -->
+<a href="#apply" id="sticky-btn" style="
+  display:none;position:fixed;bottom:24px;right:24px;z-index:99;
+  background:var(--dark);color:#fff;
+  font-family:'M PLUS Rounded 1c',sans-serif;
+  font-size:14px;font-weight:700;padding:13px 24px;border-radius:99px;
+  border:2.5px solid var(--dark);
+  box-shadow:4px 4px 0 var(--teal);
+  text-decoration:none;letter-spacing:.04em;
+  transition:transform .2s,box-shadow .2s;
+">参加申し込み →</a>
+
+<script>
+  const btn = document.getElementById('sticky-btn');
+  const heroH = document.querySelector('.hero').offsetHeight;
+  window.addEventListener('scroll', () => {
+    btn.style.display = window.scrollY > heroH ? 'block' : 'none';
+  });
+  btn.addEventListener('mouseover', () => { btn.style.transform='translateY(-3px)'; btn.style.boxShadow='4px 7px 0 var(--teal)'; });
+  btn.addEventListener('mouseout', () => { btn.style.transform=''; btn.style.boxShadow='4px 4px 0 var(--teal)'; });
+</script>
+</body>
+</html>
